@@ -6,8 +6,15 @@ from PIL import Image
 import cairosvg
 
 def shrink_power_point(input_file_path, output_file_path, size = 1024):
+    """
+    Shrink the images in a PowerPoint presentation to a specified size
 
-    print(input_file_path)
+    :param input_file_path: Path to the input PowerPoint presentation
+    :param output_file_path: Path to save the shrunk PowerPoint presentation
+    :param size: Size to shrink the images to (default is 1024)
+
+    :return: Path to the shrunk PowerPoint presentation
+    """
     # Open the input file
     with ZipFile(input_file_path, 'r') as input_file:
         # Open the input file
@@ -43,6 +50,7 @@ def shrink_power_point(input_file_path, output_file_path, size = 1024):
                 image.save(file_path)
 
             # Create a new PowerPoint presentation
+            print("Creating new PowerPoint presentation")
             with ZipFile(output_file_path, 'w') as output_file:
                 # Add the files from the original presentation to the new presentation
                 for file in file_list:
@@ -53,7 +61,7 @@ def shrink_power_point(input_file_path, output_file_path, size = 1024):
                 for file in media_files:
                     output_file.write(os.path.join(temp_dir, file), file)
 
-    return None
+    return output_file_path
 
 
 def main():
