@@ -1,4 +1,5 @@
-CairoSVG==2.7.1
 Flask==2.1.0
-Pillow==10.2.0
+Werkzeug==2.0.3
 gunicorn==20.1.0
+CairoSVG==2.7.1
+Pillow==10.2.0
