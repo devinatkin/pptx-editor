@@ -5,11 +5,19 @@ Currently takes pptx files and shrinks them to a smaller size by reducing the si
 
 """
 
-from flask import Flask, request, send_file
+from flask import Flask, render_template, request, send_file
 from shrinkpptx import shrink_power_point
 import tempfile
 import os
 app = Flask(__name__)
+
+@app.route("/")
+def main_page():
+    return render_template("home.html")
+
+@app.route("/privacy")
+def privacy():
+    return render_template('privacy.html')
 
 @app.route('/shrink_pptx', methods=['POST'])
 def shrink_pptx():
