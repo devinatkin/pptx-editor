@@ -160,3 +160,6 @@ cython_debug/
 #.idea/
 
 *.pptx
+*.webp
+leaf_image.jpg
+leaf_image.jpeg
